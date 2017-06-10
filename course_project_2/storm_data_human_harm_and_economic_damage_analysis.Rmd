@@ -1,0 +1,53 @@
+---
+title: "Storm Data Human Harm and Economic Damage Analysis"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::read_chunk('install_and_load_required_packages.R')
+knitr::read_chunk('load_storm_data.R')
+knitr::read_chunk('events_most_harmful_to_human_health.R')
+knitr::read_chunk('events_greatest_economic_consequences.R')
+```
+
+## Synopsis
+
+This work analyzes the [National Weather Service's Storm Data](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf) to answer the questions:
+
+1. Across the United States, which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health?
+
+2. Across the United States, which types of events have the greatest economic consequences?
+
+We divide "harm to population health" into "Fatalities" and "Injuries" and conclude that:
+
+1. The most deadly storm type events are "TORNADO", "EXCESSIVE HEAT", "FLASH FLOOD", "LIGHTNING", and "THUNDERSTORM", and "FLOOD", with "TORNADO" and "EXCESSIVE HEAT" being responsible for more than half of the human deaths. 
+
+2. The storm type events that caused the most human injuries are "TORNADO", "THUNDERSTORM", "EXCESSIVE HEAT", "FLOOD", "LIGHTNING", and "ICE STORM", with "TORNADO" alone being responsible for about two-thirds of the injuries.
+
+3. The events that caused the most economic damage are "FLOOD", "HURRICANE", "TORNADO", "STORM SURGE", "FLASH FLOOD", and "HAIL".
+
+## Data Processing
+
+In this section we install and load the required packages, download the Storm Data, along with it's documentation and FAQ, and then, based on the [United States Severe Weather Terminology](https://en.wikipedia.org/wiki/Severe_weather_terminology_(United_States)), we rename Event Types that we have identified as to be equal to one another. For example, observations with EVTYPE equal to 'TSTM WINDS' are of the same EVTYPE of observations with EVTYPE equal to 'THUNDERSTORM WINDS', which in turn, according to the terminology, belong both in the 'THUNDERSTORM' category. Similarly, 'EXCESSIVE HEAT' and 'RECORD HEAT' are both considered 'EXCESSIVE HEAT'.
+
+```{r install_and_load_required_packages}
+```
+
+```{r data_processing}
+```
+
+## Results
+
+### Which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health?
+
+```{r events_most_harmful_to_human_health}
+```
+
+### Across the United States, which types of events have the greatest economic consequences?
+
+```{r events_greatest_economic_consequences}
+```
+

@@ -1,0 +1,8 @@
+name: Publish Document
+title:
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/283778/ccb43c21bffa4176a94813851c5dba85
+bundleId: https://api.rpubs.com/api/v1/document/283778/ccb43c21bffa4176a94813851c5dba85
+url: http://rpubs.com/marcusmonteiro/283778/edit
+when: 1497125858.55439

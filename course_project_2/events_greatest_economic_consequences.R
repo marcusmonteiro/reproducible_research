@@ -1,4 +1,4 @@
-source('load_storm_data.R')
+## @knitr events_greatest_economic_consequences
 
 ExpToMultiplier <- function(e) {
   e <- tolower(e)
@@ -27,13 +27,13 @@ damage.by.event.type <- storm.data %>%
   summarise(TOTAL_DAMAGE_IN_DOLLARS = sum(PROPDMG_IN_DOLLARS, na.rm = TRUE) + sum(CROPDMG_IN_DOLLARS, na.rm = TRUE))
 
 events.greatest.economic.consequences <- damage.by.event.type %>%
-  filter(TOTAL_DAMAGE_IN_DOLLARS > quantile(TOTAL_DAMAGE_IN_DOLLARS, probs = 0.97)) %>%
+  filter(TOTAL_DAMAGE_IN_DOLLARS > quantile(TOTAL_DAMAGE_IN_DOLLARS, probs = 1 - 1/100)) %>%
   arrange(desc(TOTAL_DAMAGE_IN_DOLLARS))
 
 events.greatest.economic.consequences %>%
-  ggplot(aes(EVTYPE, TOTAL_DAMAGE_IN_DOLLARS)) +
-  geom_col(aes(fill = TOTAL_DAMAGE_IN_DOLLARS == max(TOTAL_DAMAGE_IN_DOLLARS)), show.legend = FALSE) +
+  ggplot(aes(reorder(EVTYPE, TOTAL_DAMAGE_IN_DOLLARS), TOTAL_DAMAGE_IN_DOLLARS)) +
+  geom_col() +
   coord_flip() +
-  ggtitle('U.S.A, Storm Event Types With Greatest Economic Consequences') +
+  ggtitle('U.S.A, Top 1% Storm Type Events in Economic Damage') +
   ylab('Total Damage in U.S. Dollars (Property + Crop)') +
   xlab('Event Type')
